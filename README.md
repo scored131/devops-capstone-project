@@ -1,5 +1,7 @@
 # devops-capstone-project
 
+![Build Status](https://github.com/scored131/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg)
+
 This capstone project implements an account microservice designed to keep track of customer accounts on an e-commerce website. Built using Python Flask, it provides a well-formed REST API to handle Create, Read, Update, Delete, and List (CRUDL) operations, and includes advanced DevOps practices such as CI/CD pipelines, containerization, and Kubernetes orchestration.
 
 # DevOps Capstone Template
