@@ -37,6 +37,7 @@ class TestAccountService(TestCase):
         app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URI
         app.logger.setLevel(logging.CRITICAL)
         talisman.force_https = False
+        
         init_db(app)
 
     @classmethod
@@ -118,6 +119,20 @@ class TestAccountService(TestCase):
         self.assertEqual(
             response.headers["Referrer-Policy"],
             "strict-origin-when-cross-origin"
+        )
+    def test_cors_headers(self):
+        """It should return CORS headers"""
+
+        response = self.client.get(
+            "/",
+            environ_overrides=HTTPS_ENVIRON
+        )
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertEqual(
+            response.headers["Access-Control-Allow-Origin"],
+            "*"
         )
 
     def test_create_account(self):
